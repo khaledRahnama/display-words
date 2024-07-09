@@ -13,12 +13,12 @@ const wordPositions = [];
 hiddenContainer.innerHTML = words.map(word => `<span class="hidden-word">${word}&nbsp;</span>`).join('');
 const hiddenWords = hiddenContainer.querySelectorAll('.hidden-word');
 
-hiddenWords.forEach(word => {
+hiddenWords.forEach((word, index) => {
     const rect = word.getBoundingClientRect();
     wordPositions.push({
-        word: word.textContent.trim(),
+        word: words[index],
         left: rect.left,
-        width: rect.width
+        top: rect.top
     });
 });
 
@@ -40,13 +40,18 @@ function displayNextWord() {
         wordElement.innerHTML = wordData.word + '&nbsp;';
         wordElement.className = 'word';
         wordElement.style.left = wordData.left + 'px';
+        wordElement.style.top = '-100px';  // Start above the container
         textContainer.appendChild(wordElement);
         
         // Trigger reflow to restart animation
         wordElement.offsetWidth;
         
+        wordElement.style.transition = 'transform 1s, opacity 1s';
+        wordElement.style.transform = `translateY(${wordData.top - containerRect.top}px)`;
+        wordElement.style.opacity = 1;
+        
         currentIndex++;
-        setTimeout(displayNextWord, 500); // Adjust the delay to control the speed of text display
+        setTimeout(displayNextWord, 1000); // Adjust the delay to control the speed of text display
     }
 }
 
