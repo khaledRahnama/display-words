@@ -27,6 +27,13 @@ body, html {
     white-space: nowrap;
 }
 
+.hidden-container {
+    visibility: hidden;
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+}
+
 .word {
     display: inline-block;
     opacity: 0;
