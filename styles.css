@@ -4,8 +4,8 @@ body {
     align-items: center;
     height: 100vh;
     margin: 0;
-    background-color: #282c34;
-    color: white;
+    background-color: #282c34; /* Set the background color */
+    color: white; /* Set text color */
     font-family: Arial, sans-serif;
     overflow: hidden; /* Hide overflow to prevent horizontal scrolling */
 }
@@ -21,6 +21,7 @@ body {
     font-size: 2em;
     position: absolute;
     white-space: nowrap; /* Prevent words from breaking into multiple lines */
+    z-index: 1; /* Ensure text appears above background */
 }
 
 /* Define animations */
