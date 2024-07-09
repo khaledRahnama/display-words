@@ -24,7 +24,19 @@ body, html {
     padding: 20px;
     border-radius: 10px;
     font-size: 2em;
-    width: 0;
-    overflow: hidden;
     white-space: nowrap;
+}
+
+.word {
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(-100px);
+    animation: fadeIn 0.5s forwards;
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
