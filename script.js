@@ -17,8 +17,8 @@ hiddenWords.forEach((word, index) => {
     const rect = word.getBoundingClientRect();
     wordPositions.push({
         word: words[index],
-        left: rect.left,
-        top: rect.top
+        left: rect.left - hiddenContainer.getBoundingClientRect().left,
+        width: rect.width
     });
 });
 
@@ -34,7 +34,7 @@ function displayNextWord() {
         wordElement.innerHTML = wordData.word + '&nbsp;';
         wordElement.className = 'word';
         wordElement.style.left = wordData.left + 'px';
-        wordElement.style.top = wordData.top + 'px';
+        wordElement.style.width = wordData.width + 'px';
         textContainer.appendChild(wordElement);
         
         // Trigger reflow to restart animation

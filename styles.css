@@ -16,12 +16,14 @@ body, html {
 
 .text-container {
     position: absolute;
+    width: 50%;
+    height: 50%;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(57, 8, 235, 0.5);
     color: white;
-    padding: 20px;
+    padding: 100px;
     border-radius: 10px;
     font-size: 2em;
     white-space: nowrap;
@@ -35,11 +37,10 @@ body, html {
 }
 
 .word {
-    display: inline-block;
-    opacity: 0;
-    animation: fadeIn 0.5s forwards;
     position: absolute;
-    transform: translateY(-30px);
+    opacity: 0;
+    transform: translateY(-100px);
+    animation: fadeIn 0.5s forwards;
 }
 
 @keyframes fadeIn {
