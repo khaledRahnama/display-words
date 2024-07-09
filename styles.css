@@ -1,0 +1,88 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #282c34;
+    color: white;
+    font-family: Arial, sans-serif;
+}
+
+.text-container {
+    display: flex;
+    gap: 10px;
+}
+
+.animated-text {
+    opacity: 0;
+    font-size: 2em;
+    position: relative;
+    animation: fadeIn 1s forwards;
+}
+
+.animated-text[data-animation="from-left"] {
+    animation: fromLeft 1s forwards;
+}
+
+.animated-text[data-animation="from-right"] {
+    animation: fromRight 1s forwards;
+}
+
+.animated-text[data-animation="from-top"] {
+    animation: fromTop 1s forwards;
+}
+
+.animated-text[data-animation="from-bottom"] {
+    animation: fromBottom 1s forwards;
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fromLeft {
+    from {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes fromRight {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes fromTop {
+    from {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes fromBottom {
+    from {
+        transform: translateY(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}

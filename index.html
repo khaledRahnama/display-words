@@ -1,90 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Animated Sentence Display</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      overflow: hidden;
-      margin: 0;
-      padding: 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      background-color: #f0f0f0;
-    }
-    .sentence {
-      display: flex;
-      flex-wrap: wrap;
-      position: relative;
-      width: 80%; /* Adjust this width to control sentence wrapping */
-    }
-    .word {
-      opacity: 0;
-      position: absolute;
-      transition: transform 1s ease-out, opacity 1s ease-out;
-    }
-    .hidden {
-      visibility: hidden;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text Animation</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <div class="text-container">
+        <span class="animated-text" data-delay="0s" data-animation="from-left">Welcome</span>
+        <span class="animated-text" data-delay="0.5s" data-animation="from-right">to</span>
+        <span class="animated-text" data-delay="1s" data-animation="from-top">Our</span>
+        <span class="animated-text" data-delay="1.5s" data-animation="from-bottom">Website</span>
+    </div>
 
-<div class="sentence" id="sentence"></div>
-<div class="sentence hidden" id="measure-sentence"></div>
-
-<script>
-  function animateSentence(sentence) {
-    const sentenceDiv = document.getElementById('sentence');
-    const measureDiv = document.getElementById('measure-sentence');
-    const words = sentence.split(' ');
-
-    // First, create invisible words to measure their positions
-    words.forEach((word, index) => {
-      const wordDiv = document.createElement('div');
-      wordDiv.textContent = word;
-      wordDiv.className = 'word';
-      measureDiv.appendChild(wordDiv);
-    });
-
-    // Now get the positions of the words
-    const positions = [];
-    const wordElements = measureDiv.children;
-    for (let i = 0; i < wordElements.length; i++) {
-      const rect = wordElements[i].getBoundingClientRect();
-      positions.push({ x: rect.left, y: rect.top });
-    }
-
-    // Remove the measurement div
-    measureDiv.innerHTML = '';
-
-    // Create the visible words and animate them
-    words.forEach((word, index) => {
-      const wordDiv = document.createElement('div');
-      wordDiv.textContent = word;
-      wordDiv.className = 'word';
-      sentenceDiv.appendChild(wordDiv);
-
-      const { x, y } = positions[index];
-
-      // Setting the initial position off-screen
-      wordDiv.style.transform = `translate(${x}px, -100vh)`;
-
-      // Animation to the final position
-      setTimeout(() => {
-        wordDiv.style.opacity = 1;
-        wordDiv.style.transform = `translate(${x}px, ${y}px)`;
-      }, index * 500); // Adjust the delay to control the animation sequence
-    });
-  }
-
-  // Example usage
-  animateSentence('This is a sample sentence to animate.');
-</script>
-
+    <script src="script.js"></script>
 </body>
 </html>
