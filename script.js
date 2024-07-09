@@ -9,7 +9,7 @@ backgroundMusic.play();
 function displayNextWord() {
     if (currentIndex < words.length) {
         const wordElement = document.createElement('span');
-        wordElement.textContent = words[currentIndex] + ' ';
+        wordElement.innerHTML = words[currentIndex] + '&nbsp;';
         wordElement.className = 'word';
         textContainer.appendChild(wordElement);
         currentIndex++;
