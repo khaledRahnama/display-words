@@ -25,20 +25,19 @@ body, html {
     border-radius: 10px;
     font-size: 2em;
     white-space: nowrap;
-    visibility: hidden;
 }
 
 .word {
     display: inline-block;
     opacity: 0;
-    position: absolute;
-    transform: translateY(-100px);
     animation: fadeIn 0.5s forwards;
+    position: relative;
+    top: -30px;
 }
 
 @keyframes fadeIn {
     to {
         opacity: 1;
-        transform: translateY(0);
+        top: 0;
     }
 }
