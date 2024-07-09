@@ -1,16 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Falling Words Animation</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Animated Sentence Display</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      overflow: hidden;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #f0f0f0;
+    }
+    .sentence {
+      display: flex;
+      flex-wrap: wrap;
+      position: relative;
+    }
+    .word {
+      position: absolute;
+      opacity: 0;
+      transition: transform 1s ease-out, opacity 1s ease-out;
+    }
+  </style>
 </head>
 <body>
-    <div class="background">
-        <div class="text-container" id="text-container"></div>
-    </div>
-    <audio id="background-music" src="your-music-file.mp3" autoplay loop></audio>
-    <script src="script.js"></script>
+
+<div class="sentence" id="sentence"></div>
+
+<script>
+  function animateSentence(sentence) {
+    const sentenceDiv = document.getElementById('sentence');
+    const words = sentence.split(' ');
+    
+    words.forEach((word, index) => {
+      const wordDiv = document.createElement('div');
+      wordDiv.textContent = word;
+      wordDiv.className = 'word';
+      sentenceDiv.appendChild(wordDiv);
+
+      const x = index * 100; // Adjust this value to set the horizontal spacing between words
+      const y = 50; // Adjust this value to set the vertical position of words
+
+      // Setting the initial position
+      wordDiv.style.transform = `translate(${x}px, -100vh)`;
+
+      // Animation
+      setTimeout(() => {
+        wordDiv.style.opacity = 1;
+        wordDiv.style.transform = `translate(${x}px, ${y}px)`;
+      }, index * 500); // Adjust the delay to control the animation sequence
+    });
+  }
+
+  // Example usage
+  animateSentence('This is a sample sentence to animate.');
+</script>
+
 </body>
 </html>
