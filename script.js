@@ -13,13 +13,19 @@ const wordPositions = [];
 hiddenContainer.innerHTML = words.map(word => `<span class="hidden-word">${word}&nbsp;</span>`).join('');
 const hiddenWords = hiddenContainer.querySelectorAll('.hidden-word');
 
-hiddenWords.forEach((word, index) => {
+hiddenWords.forEach(word => {
     const rect = word.getBoundingClientRect();
     wordPositions.push({
-        word: words[index],
-        left: rect.left - hiddenContainer.getBoundingClientRect().left,
+        word: word.textContent.trim(),
+        left: rect.left,
         width: rect.width
     });
+});
+
+// Adjust the left positions relative to the text container
+const containerRect = textContainer.getBoundingClientRect();
+wordPositions.forEach(pos => {
+    pos.left -= containerRect.left;
 });
 
 // Clean up the hidden container
@@ -34,7 +40,6 @@ function displayNextWord() {
         wordElement.innerHTML = wordData.word + '&nbsp;';
         wordElement.className = 'word';
         wordElement.style.left = wordData.left + 'px';
-        wordElement.style.width = wordData.width + 'px';
         textContainer.appendChild(wordElement);
         
         // Trigger reflow to restart animation
