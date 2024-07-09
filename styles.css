@@ -7,81 +7,62 @@ body {
     background-color: #282c34;
     color: white;
     font-family: Arial, sans-serif;
+    overflow: hidden; /* Hide overflow to prevent horizontal scrolling */
 }
 
 .text-container {
     display: flex;
-    gap: 10px;
+    position: relative;
+    overflow: hidden; /* Hide overflow to prevent horizontal scrolling */
 }
 
 .animated-text {
     opacity: 0;
     font-size: 2em;
-    position: relative;
-    animation: fadeIn 1s forwards;
+    position: absolute;
+    white-space: nowrap; /* Prevent words from breaking into multiple lines */
 }
 
-.animated-text[data-animation="from-left"] {
-    animation: fromLeft 1s forwards;
-}
-
-.animated-text[data-animation="from-right"] {
-    animation: fromRight 1s forwards;
-}
-
-.animated-text[data-animation="from-top"] {
-    animation: fromTop 1s forwards;
-}
-
-.animated-text[data-animation="from-bottom"] {
-    animation: fromBottom 1s forwards;
-}
-
-@keyframes fadeIn {
-    to {
-        opacity: 1;
-    }
-}
-
+/* Define animations */
 @keyframes fromLeft {
-    from {
+    0% {
         transform: translateX(-100%);
         opacity: 0;
     }
-    to {
+    100% {
         transform: translateX(0);
         opacity: 1;
     }
 }
 
 @keyframes fromRight {
-    from {
+    0% {
         transform: translateX(100%);
         opacity: 0;
     }
-    to {
+    100% {
         transform: translateX(0);
         opacity: 1;
     }
 }
 
 @keyframes fromTop {
-    from {
+    0% {
         transform: translateY(-100%);
         opacity: 0;
     }
-    to {
+    100% {
         transform: translateY(0);
         opacity: 1;
     }
 }
 
 @keyframes fromBottom {
-    from {
+    0% {
         transform: translateY(100%);
         opacity: 0;
     }
-    to {
+    100% {
         transform: translateY(0);
         opacity: 1;
     }
