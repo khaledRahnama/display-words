@@ -33,7 +33,6 @@ function displayNextWord() {
         const wordElement = document.createElement('span');
         wordElement.innerHTML = wordData.word + '&nbsp;';
         wordElement.className = 'word';
-        wordElement.style.position = 'absolute';
         wordElement.style.left = wordData.left + 'px';
         wordElement.style.top = wordData.top + 'px';
         textContainer.appendChild(wordElement);
